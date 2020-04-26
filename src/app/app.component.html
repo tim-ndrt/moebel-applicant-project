@@ -1,0 +1,22 @@
+<form [formGroup]="bizzFuzzForm">
+  To start, type in a random number<br>
+  <input type="number" formControlName="randNumber" required=""><br>
+  <div *ngIf="this.bizzFuzzForm.get('randNumber').valid">
+    Define values for multiplies of numbers<br>
+    <label>Multiplies of 3
+      <input type="text" placeholder="for 3" formControlName="multipliesOf3" required="">
+    </label>
+    <label>Multiplies of 5
+      <input type="text" placeholder="for 5" formControlName="multipliesOf5" required="">
+    </label>
+    <label>Multiplies of both
+      <input type="text" placeholder="for both" formControlName="multipliesOfBoth" required="">
+    </label>
+  </div>
+</form>
+<p *ngIf="bizzFuzzForm.invalid" style="color: red">All fields are required.</p>
+Result
+<ul>
+  <li *ngFor="let singleElement of result">{{singleElement}}</li>
+</ul>
+<p *ngIf="result === undefined">No results so far.</p>
